@@ -1,9 +1,10 @@
 <div>
     <h2>Login</h2>
-    @error('message')
-        {{ $message }}
-    @enderror
-    <form method="POST" action="/login">
+    @if ($message = session()->get('message'))
+        <span>{{ $message }}</span>
+    @endif
+
+    <form method="POST" action="{{ route('login') }}">
         @csrf
         <div>
             <input type="email" name="email" placeholder="Email">
