@@ -27,4 +27,11 @@ class LoginController extends Controller
             'message' => 'As credenciais fornecidas não correspondem aos nossos registros',
         ])->onlyInput('email');
     }
+
+    public function logout(): RedirectResponse
+    {
+        Auth::logout();
+
+        return redirect()->route('login')->with(['message' => 'Desconectado com sucesso!']);
+    }
 }

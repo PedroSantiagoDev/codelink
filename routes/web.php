@@ -8,6 +8,10 @@ Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/logout', [LoginController::class, 'logout']);
+});
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'authenticate']);
