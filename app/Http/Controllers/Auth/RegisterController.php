@@ -17,7 +17,7 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request): RedirectResponse
     {
-        User::create($request->validated());
+        User::query()->create($request->validated());
 
         return to_route('login')->with(['message' => 'Registro realizado com sucesso!']);
     }
